@@ -1,6 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\Healthcare.Domain\Healthcare.Domain.csproj" />
     <ProjectReference Include="..\Healthcare.Data\Healthcare.Data.csproj" />
   </ItemGroup>
   <ItemGroup>
