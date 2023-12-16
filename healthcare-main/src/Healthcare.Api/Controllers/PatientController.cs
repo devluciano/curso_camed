@@ -1,44 +1,51 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Healthcare.Domain.Patients;
 
 namespace Healthcare.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class PatientController : ControllerBase
     {
+        private readonly IPatientAppService _appService;
+
+        public PatientController(IPatientAppService appService)
+            => _appService = appService;
+
         // GET: api/<PatientController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "valor1", "valor2" };
+            return Ok(new string[] { "value1", "value2" });
         }
 
         // GET api/<PatientController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            return Ok("value");
         }
 
         // POST api/<PatientController>
         [HttpPost]
         public IActionResult Post(ProblemDetails problemDetails)
         {
-            return Ok(problemDetails);
+            return CreatedAtAction("api/Patient/", problemDetails);
         }
 
         // PUT api/<PatientController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] string value)
         {
+            return Ok();
         }
 
         // DELETE api/<PatientController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            return NoContent();
         }
     }
 }

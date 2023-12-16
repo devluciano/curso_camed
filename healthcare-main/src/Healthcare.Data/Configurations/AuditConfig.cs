@@ -1,4 +1,4 @@
-﻿using Healthcare.Domain;
+using Healthcare.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
